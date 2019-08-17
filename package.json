@@ -1,0 +1,10 @@
+{
+	"name": "js-interpreter",
+	"version": "2019.08.16",
+	"description": "JS-Interpreter fork which supports running on node via npm",
+	"scripts": {},
+	"author": "",
+	"license": "Apache",
+	"dependencies": {},
+	"devDependencies": {}
+}
