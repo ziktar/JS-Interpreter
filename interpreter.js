@@ -22,6 +22,9 @@
  * @author fraser@google.com (Neil Fraser)
  */
 'use strict';
+if (typeof require !== undefined) {
+  var acorn = require('./acorn');
+}
 
 /**
  * Create a new interpreter.
@@ -289,6 +292,8 @@ Interpreter.prototype.initGlobalScope = function(scope) {
   this.setProperty(scope, 'undefined', undefined,
                    Interpreter.READONLY_DESCRIPTOR);
   this.setProperty(scope, 'window', scope,
+                   Interpreter.READONLY_DESCRIPTOR);
+  this.setProperty(scope, 'global', scope,
                    Interpreter.READONLY_DESCRIPTOR);
   this.setProperty(scope, 'this', scope,
                    Interpreter.READONLY_DESCRIPTOR);
@@ -3944,3 +3949,7 @@ Interpreter.prototype['nativeToPseudo'] = Interpreter.prototype.nativeToPseudo;
 Interpreter.prototype['pseudoToNative'] = Interpreter.prototype.pseudoToNative;
 // Obsolete.  Do not use.
 Interpreter.prototype['createPrimitive'] = function(x) {return x;};
+
+if (typeof module === 'object') {
+  module.exports = Interpreter;
+}
